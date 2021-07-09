@@ -20,11 +20,27 @@ const Login = () => {
       .catch((error) => alert(error.message));
   };
   return (
-    <div className="login">
-      <div className="login__logo"></div>
-      <Button type="submit" onClick={signIn}>
-        Sign In
-      </Button>
+    <div className="container">
+      <div className="illustration">
+        <img
+          src="https://image.freepik.com/free-vector/finance-department-employees-are-calculating-expenses-company-s-business_1150-41782.jpg"
+          alt=""
+        />
+        <div className="login">
+          <h1>Track your expenses like never before</h1>
+          <p className="hero-content">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati
+            assumenda excepturi officiis consectetur suscipit, ullam ipsum
+            laborum. Repudiandae animi quibusdam voluptatem nam quod est commodi
+            quam! Illo tempore minus culpa ipsum neque ducimus assumenda,
+            aspernatur doloremque tempora ad, earum cum quae eligendi ipsam
+            debitis, optio officiis deleniti odio. Corrupti, animi.
+          </p>
+          <Button className="login-btn" type="submit" onClick={signIn}>
+            Log In with Google
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

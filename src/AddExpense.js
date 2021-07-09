@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, TextField, FormControl } from "@material-ui/core";
 import db from "./firebase";
-import firebase from "firebase";
 
 import { useStateValue } from "./StateProvider";
 
@@ -21,7 +20,7 @@ const AddExpense = () => {
     e.preventDefault();
 
     db.collection("expenses").add({
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      timestamp: curr.toLocaleString(),
       user: user.uid,
       text,
       amount,
@@ -33,10 +32,9 @@ const AddExpense = () => {
     setAmount(0);
   };
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} autoComplete="off">
       <FormControl>
         <TextField
-          autoComplete="false"
           id="outlined-basic"
           label="Expense"
           value={text}
@@ -47,6 +45,7 @@ const AddExpense = () => {
           id="outlined-basic"
           label="Amount"
           type="number"
+          value
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           variant="outlined"

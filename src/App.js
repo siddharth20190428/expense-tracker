@@ -14,12 +14,11 @@ function App() {
   const [{ user }, dispatch] = useStateValue();
   return (
     <div className="App">
+      <Header />
       {!user ? (
         <Login />
       ) : (
         <>
-          <Header />
-          <AddExpense />
           <Home />
         </>
       )}

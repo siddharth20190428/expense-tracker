@@ -21,7 +21,8 @@ const AddExpense = () => {
     e.preventDefault();
 
     db.collection("expenses").add({
-      timestamp: curr.toLocaleString(),
+      date: currDate,
+      time: currTime,
       user: user.uid,
       text,
       amount,
@@ -86,7 +87,11 @@ const AddExpense = () => {
                   step: 300, // 5 min
                 }}
               />
-              <Button className="add-trans" type="submit">
+              <Button
+                className="add-trans"
+                type="submit"
+                onClose={() => setOpen(false)}
+              >
                 Add transaction
               </Button>
             </FormControl>

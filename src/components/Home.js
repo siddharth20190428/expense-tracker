@@ -13,7 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     db.collection("expenses")
-      .orderBy("timestamp", "desc")
+      .orderBy("date", "desc")
       .onSnapshot((snapshot) => {
         // every time a new post is added, this code fired
         setExpenses(
@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div className="main">
       <AddExpense />
-      <CustomizedTable user={user} expenses={expenses} />
+      <CustomizedTable expenses={expenses} />
     </div>
   );
 };

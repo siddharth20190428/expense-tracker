@@ -36,7 +36,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CustomizedTables = ({ user, expenses }) => {
+const CustomizedTables = ({ expenses }) => {
   const classes = useStyles();
 
   return (
@@ -46,23 +46,35 @@ const CustomizedTables = ({ user, expenses }) => {
           <TableRow>
             <StyledTableCell>Expenses</StyledTableCell>
             <StyledTableCell align="right">Amount</StyledTableCell>
-            <StyledTableCell align="right">Timestamp</StyledTableCell>
+            <StyledTableCell align="right">Date</StyledTableCell>
+            <StyledTableCell align="right">Time</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {expenses.map((row) => (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-                {row.expense.text}
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                &#8377;&nbsp;{row.expense.amount}
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                {row.expense.timestamp}
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
+          {expenses.length === 0 ? (
+            <>
+              <StyledTableRow key={0}>No expenses till now</StyledTableRow>
+            </>
+          ) : (
+            expenses.map((row) => {
+              return (
+                <StyledTableRow key={row.id}>
+                  <StyledTableCell component="th" scope="row">
+                    {row.expense.text}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    &#8377;&nbsp;{row.expense.amount}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {row.expense.date}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {row.expense.time}
+                  </StyledTableCell>
+                </StyledTableRow>
+              );
+            })
+          )}
         </TableBody>
       </Table>
     </TableContainer>

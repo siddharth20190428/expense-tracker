@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import db from "./firebase";
+import db from "../firebase";
 import CustomizedTable from "./Table";
+import AddExpense from "./AddExpense";
 
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../utils/StateProvider";
 
 const Home = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -20,18 +21,15 @@ const Home = () => {
             .filter((doc) => doc.data().user === user.uid)
             .map((doc) => ({ id: doc.id, expense: doc.data() }))
         );
-        // setTotal(
-        //   expenses.forEach((exp) => {
-        //     total = total + exp.expense.amount;
-        //   })
-        // );
+        // setTotal(expenses.reduce((acc, curr) => acc + +curr.expense.amount, 0));
       });
   }, []);
 
   return (
-    <>
-      <CustomizedTable user={user} />
-    </>
+    <div className="main">
+      <AddExpense />
+      <CustomizedTable user={user} expenses={expenses} />
+    </div>
   );
 };
 

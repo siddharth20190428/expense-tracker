@@ -1,10 +1,20 @@
+:root {
+  --header-bg: #242629;
+  --bg-color: #16161a;
+  --h1-color: #fffffe;
+  --p-color: #94a1b2;
+  --btn-bg: #7f5af0;
+}
+
 .App {
   height: 100vh;
+  background-color: var(--bg-color) !important;
 }
 .container {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  height: 85vh;
 }
 
 .login {
@@ -13,23 +23,118 @@
 
 header {
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
   box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.2);
+  background-color: var(--header-bg) !important;
 }
 
 .illustration {
   margin: 20px;
 }
 
+.login h1 {
+  font-size: 3.5rem !important;
+  line-height: 1.15 !important;
+  font-weight: 700 !important;
+  font-family: "Poppins", serif;
+  color: var(--h1-color);
+}
+
 .hero-content {
   margin: 25px 0;
+  font-size: 1.3rem !important;
+  font-weight: 400 !important;
+  color: var(--p-color);
+  font-family: "Poppins", serif;
+}
+
+.logo {
+  color: var(--h1-color);
+  font-family: "Poppins", serif;
+}
+
+.fa-google {
+  margin: 0 0.5rem;
 }
 
 .login-btn {
-  box-shadow: 0 10px 10px rgb(0 0 0 / 10%) !important;
+  /* box-shadow: 0 10px 10px rgb(0 0 0 / 10%) !important; */
   padding: 5px 10px !important;
+  color: white !important;
+  background: #fa5246 !important;
+  border-radius: 0.85rem !important;
 }
 .login-btn:hover {
-  box-shadow: 0 3px 5px rgb(0 0 0 / 50%);
+  box-shadow: 0 5px 15px -10px #000;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  color: var(--h1-color);
+}
+
+.username {
+  margin: 0 1rem;
+}
+
+.logout-btn {
+  background: #fa5246 !important;
+  color: white !important;
+}
+
+.logout-btn:hover {
+  box-shadow: 0 5px 15px -10px #000 !important;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  height: 80vh;
+  align-items: center;
+}
+
+.add-trans {
+  color: var(--h1-color) !important;
+  margin-bottom: 1rem !important;
+  background: #2cb67d !important;
+}
+
+.table-container {
+  width: 80% !important;
+  background: #16161a !important;
+  color: white !important;
+}
+
+tr,
+td,
+th {
+  color: #fffffe !important;
+  border: none !important;
+}
+
+tr {
+  background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.mod {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.trans {
+  padding: 1rem;
+  height: fit-content;
+  width: fit-content;
+  background: #fff !important;
+}
+
+.inputs {
+  margin: 15px 10px !important;
 }

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import db from "./firebase";
+import React from "react";
 
 import {
   withStyles,
@@ -37,26 +36,11 @@ const useStyles = makeStyles({
   },
 });
 
-const CustomizedTables = ({ user }) => {
+const CustomizedTables = ({ user, expenses }) => {
   const classes = useStyles();
 
-  const [expenses, setExpenses] = useState([]);
-
-  useEffect(() => {
-    db.collection("expenses")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        // every time a new post is added, this code fired
-        setExpenses(
-          snapshot.docs
-            .filter((doc) => doc.data().user === user.uid)
-            .map((doc) => ({ id: doc.id, expense: doc.data() }))
-        );
-      });
-  }, []);
-
   return (
-    <TableContainer component={Paper}>
+    <TableContainer className="table-container" component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -66,7 +50,6 @@ const CustomizedTables = ({ user }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {console.log(expenses)}
           {expenses.map((row) => (
             <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">

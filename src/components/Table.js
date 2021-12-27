@@ -10,7 +10,9 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Button,
 } from "@material-ui/core";
+import db from "../firebase";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -39,12 +41,17 @@ const useStyles = makeStyles({
 const CustomizedTables = ({ expenses }) => {
   const classes = useStyles();
 
+  const handleDelete = (id) => {
+    db.collection("expenses").doc(id).delete();
+  };
+
   return (
     <TableContainer className="table-container" component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Expenses</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
             <StyledTableCell align="right">Amount</StyledTableCell>
             <StyledTableCell align="right">Date</StyledTableCell>
             <StyledTableCell align="right">Time</StyledTableCell>
@@ -61,6 +68,15 @@ const CustomizedTables = ({ expenses }) => {
                 <StyledTableRow key={row.id}>
                   <StyledTableCell component="th" scope="row">
                     {row.expense.text}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => handleDelete(row.id)}
+                    >
+                      Delete
+                    </Button>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     &#8377;&nbsp;{row.expense.amount}

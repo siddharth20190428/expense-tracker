@@ -9,8 +9,6 @@ const AddExpense = () => {
   const [open, setOpen] = useState(false);
 
   const [text, setText] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
   const [amount, setAmount] = useState(0);
 
   const curr = new Date();
@@ -29,8 +27,6 @@ const AddExpense = () => {
     });
 
     setText("");
-    setDate("");
-    setTime("");
     setAmount(0);
   };
   return (
@@ -49,43 +45,19 @@ const AddExpense = () => {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 variant="outlined"
+                required
               />
               <TextField
                 className="inputs"
                 id="outlined-basic"
                 label="Amount"
                 type="number"
+                min="0"
                 pattern="/^[0-9.]+$/"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 variant="outlined"
-              />
-              <TextField
-                className="inputs"
-                id="date"
-                label="Date"
-                type="date"
-                defaultValue={currDate}
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              <TextField
-                className="inputs"
-                id="time"
-                label="Time"
-                type="time"
-                defaultValue={currTime}
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                inputProps={{
-                  step: 300, // 5 min
-                }}
+                required
               />
               <Button
                 className="add-trans"
